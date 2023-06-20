@@ -12,7 +12,7 @@ document '<
 
   +make-title(|
     title = {
-      |TODO
+      |巨大なコードベースへ突撃するために
       |};
     author = {|nsfisis (いまむら)|};
     date = {|PHPカンファレンス福岡2023 前夜祭 (非公式)|};
@@ -35,8 +35,139 @@ document '<
 
   %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-  +frame{まとめ}<
-    +p{TODO}
+  +section{|はじめに|}<
+    +frame{前置き}<
+      +listing{
+        * 巨大なコードベースとは
+          ** 数十万から数百万行のソースコード
+        * 主な対象
+          ** 巨大なコードベースを読んだことがない方
+        * 話さないこと
+          ** 特定の言語向けの how-to (デバッガの使い方など)
+      }
+    >
+
+    +frame{アジェンダ}<
+      +enumerate{
+        * ソースコードに突撃する前にできること
+        * ソースコードを効率的に読む
+        * 巨大なコードベースを読むときの心構え
+      }
+    >
+  >
+
+  +section{|ソースコードに突撃する前に|できること|}<
+    +frame{読む前にできること}<
+      +fig-center(vconcat [
+        gap 75pt;
+        textbox?:(set-font-size 24pt){読まなくても分かるなら、};
+        gap 15pt;
+        textbox?:(set-font-size 24pt){読まないに越したことはない};
+      ]);
+    >
+
+    +frame{読む前にできること}<
+      +listing{
+        * 公式ドキュメント
+          ** あれば
+        * イシュートラッカー
+          ** 誰かが報告しているかも
+        * リリースノート
+          ** 実はもう直っているかも
+      }
+    >
+  >
+
+  +section{|ソースコードを効率的に読む|}<
+    +frame{ソースコードを取得する}<
+      +listing{
+        * ローカルに clone してすぐに読めるようにする
+        * \code(`--depth=1`); つきで shallow clone する (Git の場合)
+          ** 新しめの Git なら git scalar も (巨大リポジトリに最適化した Git の拡張)
+        * ブランチ‥タグを自分が読みたいものにする
+      }
+    >
+
+    +frame{構成を把握する}<
+      +listing{
+        * ディレクトリ構成を把握する
+        * 全体のアーキテクチャを知る
+      }
+      +fig-center(gap 15pt);
+      +p{
+        典型的なパターンを知っていると有利
+      }
+    >
+
+    +frame{該当個所を見つける}<
+      +p{
+        コードリーディング3種の神器
+      }
+    >
+
+    +frame{該当個所を見つける}<
+      +p{
+        コードリーディング3種の神器
+      }
+      +fig-center(gap 15pt);
+      +listing{
+        * git grep
+      }
+    >
+
+    +frame{該当個所を見つける}<
+      +p{
+        コードリーディング3種の神器
+      }
+      +fig-center(gap 15pt);
+      +listing{
+        * git grep
+        * git log
+      }
+    >
+
+    +frame{該当個所を見つける}<
+      +p{
+        コードリーディング3種の神器
+      }
+      +fig-center(gap 15pt);
+      +listing{
+        * git grep
+        * git log
+        * vim
+      }
+    >
+
+    +frame{該当個所を見つける}<
+      +p{
+        コードリーディング3種の神器
+      }
+      +fig-center(gap 15pt);
+      +listing{
+        * git grep
+        * git log
+        * vim (neovim でも可)
+      }
+    >
+
+    +frame{調査・デバッグ}<
+      +listing{
+        * テストコードを調べる
+        * 脳内でトレースする
+        * 言語・ライブラリ特有の落とし穴を重点的に読む
+      }
+    >
+  >
+
+  +section{|巨大なコードベースを読むときの心構え|}<
+    +frame{心構え}<
+      +fig-center(vconcat [
+        gap 75pt;
+        textbox?:(set-font-size 24pt){すべての調査過程を記録せよ};
+        gap 50pt;
+        textbox{開いたファイル、読んだ関数、立てた仮説、etc};
+      ]);
+    >
   >
 
 >
